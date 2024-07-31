@@ -1,10 +1,12 @@
 import Express from "express";
 import cors from 'cors';
 import "dotenv/config";
+import requests from "./routes/requests";
 
 let app = Express();
 
 app.use("/", cors({ origin: '*' }), Express.json())
+app.use("/request", requests)
 
 app.get("/test", (req, res) => {
     res.send("Done");
