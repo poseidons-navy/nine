@@ -1,7 +1,7 @@
 import { dagJson } from "@helia/dag-json";
 import node from "./client";
 
-async function storeRequest() {
+export async function storeRequest() {
     try {
         const d = dagJson(node);
 
