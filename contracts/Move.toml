@@ -1,10 +1,10 @@
 [package]
 name = "contracts"
 version = "1.0.0"
-authors = []
+authors = ["PatrickOjiambo"]
 
 [addresses]
-
+nine="0xec01053e3949d72584ebd8f88ef270faa31717cc2120ce7d3702fcbf39c4c83f"
 [dev-addresses]
 
 [dependencies.AptosFramework]
