@@ -1,0 +1,25 @@
+{
+    "name": "@nine/lama",
+    "version": "0.0.3",
+    "description": "",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "private": false,
+    "scripts": {
+      "build": "rm -rf ./dist && tsup"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@types/lodash": "^4.17.0",
+      "@types/node": "^20.12.7",
+      "tsup": "^8.0.2",
+      "typescript": "^5.4.5"
+    },
+    "dependencies": {
+      "lodash": "^4.17.21",
+      "node-lmdb": "^0.10.0"
+    }
+  }

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package events;
+message Cid {
+    string cid = 1;
+    int64 timestamp = 2;
+    int64 hid = 3;
+}
+
+message EventRequest {
+    int64 sequence_number = 1;
+}
+
+message EventsRequest {
+    int64 sequence_number = 1;
+    string event_type = 2;
+}
+
+message Event {
+    string event_type = 1;
+    int64 sequence_number = 2;
+    oneof event {
+        Cid cid_stored = 3;
+    }
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "events.proto";
+
+service NineService {
+    rpc GetNineEvent(events.EventRequest) returns (events.Event);
+    rpc GetNineEvents(events.EventsRequest) returns (stream events.Event);
+}
