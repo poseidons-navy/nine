@@ -1,0 +1,15 @@
+[package]
+name = "nine"
+version = "1.0.0"
+authors = []
+
+[addresses]
+nine="0xace795d5aaebe47a75510629308e9f73df34e5eae212c160039bbb5ec742146c"
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+rev = "mainnet"
+subdir = "aptos-move/framework/aptos-framework"
+
+[dev-dependencies]

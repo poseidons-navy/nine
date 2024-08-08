@@ -1,0 +1,15 @@
+scalar Date
+scalar JSON
+
+input Pagination {
+  page: Int!
+  size: Int!
+}
+type oneCid{
+        id: String,
+        timestamp: Date,
+        cid: String,
+    }
+type Query{
+    cid: oneCid
+}
