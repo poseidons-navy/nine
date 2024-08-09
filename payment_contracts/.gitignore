@@ -1,0 +1,5 @@
+.aptos
+build
+
+test-account.ts
+.env
