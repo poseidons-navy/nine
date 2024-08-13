@@ -1,0 +1,20 @@
+{
+  "name": "@nine/payment-processor",
+  "version": "1.0.0",
+  "description": "A payment package for the nine protocol ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nine",
+    "payment",
+    "processor",
+    "nine-payment-processor"
+  ],
+  "author": "Patrick Ojiambo",
+  "license": "ISC",
+  "dependencies": {
+    "tsup": "^8.2.4"
+  }
+}
