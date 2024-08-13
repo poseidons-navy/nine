@@ -161,12 +161,18 @@ importers:
 
   packages/lama:
     dependencies:
+      db:
+        specifier: workspace:*
+        version: link:../db
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
       node-lmdb:
         specifier: ^0.10.0
         version: 0.10.1
+      zschema:
+        specifier: workspace:*
+        version: link:../schema
     devDependencies:
       '@types/lodash':
         specifier: ^4.17.0

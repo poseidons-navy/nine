@@ -24,8 +24,9 @@ export class Worker {
     }
 
     async run(_startingVersion?: bigint) {
-        const NET = process.env.APTOS_NET! || "testnet"
-        const GRPC_HOST = NET === "mainnet" ? "grpc.mainnet.aptoslabs.com:443" : "grpc.testnet.aptoslabs.com:443"
+        // const NET = process.env.APTOS_NET! || "testnet"
+        // const GRPC_HOST = NET === "mainnet" ? "grpc.mainnet.aptoslabs.com:443" : "grpc.testnet.aptoslabs.com:443"
+        const GRPC_HOST = "grpc.testnet.aptoslabs.com:443"
         const client = new aptos.indexer.v1.RawDataClient(
             GRPC_HOST,
             ChannelCredentials.createSsl(),
@@ -58,7 +59,6 @@ export class Worker {
         metadata.set("Authorization", `Bearer ${this.token}`)
 
         const stream = client.getTransactions(request, metadata)
-
         let currentTxnVersion = startingVersion
         const timer = new Timer()
         timer.start()
@@ -68,7 +68,7 @@ export class Worker {
             stream.pause()
 
             const transactions = response.transactions
-
+            // console.log("Transactions", transactions);
             if (!transactions || isNull(transactions)) {
                 return
             }
@@ -87,7 +87,7 @@ export class Worker {
             })
 
             const numProcessed = processingResult.endVersion - processingResult.startVersion
-
+            console.log("numProcessed", numProcessed);
             currentTxnVersion = endVersion
 
             if (numProcessed) {

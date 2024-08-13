@@ -20,6 +20,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@aptos-labs/ts-sdk": "^1.26.0",
     "@helia/dag-json": "^3.0.5",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

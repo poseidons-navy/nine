@@ -1,9 +1,9 @@
 import protos, { aptos } from "@aptos-labs/aptos-protos";
 import { LevelDB } from "@nine/lama";
-
+import "dotenv/config";
 const MODULE_ADDRESS = process.env.MODULE_ADDRESS!
-
-const NINE = `${MODULE_ADDRESS}::store_cid` as const
+console.log("Module address", MODULE_ADDRESS);
+const NINE = `${MODULE_ADDRESS}::nine` as const
 
 
 const SUPPORTED_EVENT_TYPES = [
@@ -55,6 +55,7 @@ export class ReadProcessor extends TransactionsProcessor {
         for (const transaction of transactions) {
 
             if (transaction.type != protos.aptos.transaction.v1.Transaction_TransactionType.TRANSACTION_TYPE_USER) {
+                // console.log("Continuing");
                 continue
             }
 
@@ -65,20 +66,29 @@ export class ReadProcessor extends TransactionsProcessor {
                 Buffer.from(userTransaction.request?.signature?.ed25519?.signature!).toString('hex') : ''
 
             if (!userTransaction.events) {
+                console.log("No events")
                 continue
             }
 
             const events = userTransaction.events!;
 
             for (const event of events) {
+
                 const eventType = event.typeStr;
+                // console.log("Event type", eventType);
                 if (eventType && SUPPORTED_EVENT_TYPES.includes(eventType)) {
+                    console.log("Our event type", eventType);
                     console.log("Processing event", eventType)
+                    console.log("Event data", event.data);
+                    console.log("Signature", hex_signature);
                     await db.put({
                         type: eventType?.split("::")?.at(2),
                         event: event.data,
                         signature: hex_signature
                     })
+                    // await db.insertEvent(JSON.parse(event.data!));
+
+                    
                 }
             }
 

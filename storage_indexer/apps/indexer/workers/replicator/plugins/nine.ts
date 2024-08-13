@@ -9,22 +9,21 @@ const { cidEvents } = dschema
 
 export class CidProcessor implements ProcessorPlugin {
     name(): EVENT_NAMES {
-        return 'Cid';
+        return 'CidStoredEvent';
     }
     async process(event: Record<string, any>, monitor: ProcessMonitor, sequence_number: string, signature: string) {
-
+        console.log("Processing CidStoredEvent, Adding to DB");
         const parsed = schema.Cid.safeParse(event)
 
         if (!parsed.success) {
             console.log("Invalid Cid event", parsed.error)
-            monitor.setFailed(sequence_number, {message: "Invalid Cid", error: parsed.error});
+            monitor.setFailed(sequence_number, { message: "Invalid Cid", error: parsed.error });
             return
         }
 
         const data = parsed.data
 
         try {
-            //TODO: Update id to come from the chain
             await db.insert(cidEvents).values({
                 id: `${data.hid}`,
                 cid: data.cid,
@@ -33,7 +32,7 @@ export class CidProcessor implements ProcessorPlugin {
 
         }
         catch (e) {
-            monitor.setFailed(sequence_number, {message: "Could Not Store Envelope", error: e});
+            monitor.setFailed(sequence_number, { message: "Could Not Store CidEvent", error: e });
         }
 
     }
