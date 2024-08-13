@@ -1,5 +1,9 @@
 import _ from "lodash"
 import { Lama, LamaReader } from "./lama"
+import db from "db"
+import { schema as dschema } from "db";
+import * as schema from 'zschema'
+const { cidEvents } = dschema
 const { isNumber, isNull } = _;
 
 export {
@@ -78,7 +82,20 @@ export class LevelDB {
         await this._sequence_store!.put("sequence", `${sequence + 1}`);
         await this._version_store!.put("version", `${sequence + 1}`);
     }
-
+    async insertEvent(event: Record<string, any>) {
+        try {
+            const parsed = schema.Cid.safeParse(event)
+            const data = parsed.data!
+            await db.insert(cidEvents).values({
+                id: `${data.hid}`,
+                cid: data.cid,
+                timestamp: data.timestamp
+            })
+        }
+        catch (e) {
+            throw new Error((e as Error).toString())
+        }
+    }
     async get(sequence: number) {
         const nextKey = this.getNextKey(sequence);
         return await this._db!.get(nextKey);

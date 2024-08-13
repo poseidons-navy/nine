@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace events {
-    export class Cid extends pb_1.Message {
+    export class CidStoredEvent extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             cid?: string;
@@ -48,8 +48,8 @@ export namespace events {
             cid?: string;
             timestamp?: number;
             hid?: number;
-        }): Cid {
-            const message = new Cid({});
+        }): CidStoredEvent {
+            const message = new CidStoredEvent({});
             if (data.cid != null) {
                 message.cid = data.cid;
             }
@@ -91,8 +91,8 @@ export namespace events {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Cid {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Cid();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CidStoredEvent {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CidStoredEvent();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -114,8 +114,8 @@ export namespace events {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): Cid {
-            return Cid.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): CidStoredEvent {
+            return CidStoredEvent.deserialize(bytes);
         }
     }
     export class EventRequest extends pb_1.Message {
@@ -281,7 +281,7 @@ export namespace events {
             event_type?: string;
             sequence_number?: number;
         } & (({
-            cid_stored?: Cid;
+            cid_stored?: CidStoredEvent;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -310,9 +310,9 @@ export namespace events {
             pb_1.Message.setField(this, 2, value);
         }
         get cid_stored() {
-            return pb_1.Message.getWrapperField(this, Cid, 3) as Cid;
+            return pb_1.Message.getWrapperField(this, CidStoredEvent, 3) as CidStoredEvent;
         }
-        set cid_stored(value: Cid) {
+        set cid_stored(value: CidStoredEvent) {
             pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
         }
         get has_cid_stored() {
@@ -330,7 +330,7 @@ export namespace events {
         static fromObject(data: {
             event_type?: string;
             sequence_number?: number;
-            cid_stored?: ReturnType<typeof Cid.prototype.toObject>;
+            cid_stored?: ReturnType<typeof CidStoredEvent.prototype.toObject>;
         }): Event {
             const message = new Event({});
             if (data.event_type != null) {
@@ -340,7 +340,7 @@ export namespace events {
                 message.sequence_number = data.sequence_number;
             }
             if (data.cid_stored != null) {
-                message.cid_stored = Cid.fromObject(data.cid_stored);
+                message.cid_stored = CidStoredEvent.fromObject(data.cid_stored);
             }
             return message;
         }
@@ -348,7 +348,7 @@ export namespace events {
             const data: {
                 event_type?: string;
                 sequence_number?: number;
-                cid_stored?: ReturnType<typeof Cid.prototype.toObject>;
+                cid_stored?: ReturnType<typeof CidStoredEvent.prototype.toObject>;
             } = {};
             if (this.event_type != null) {
                 data.event_type = this.event_type;
@@ -387,7 +387,7 @@ export namespace events {
                         message.sequence_number = reader.readInt64();
                         break;
                     case 3:
-                        reader.readMessage(message.cid_stored, () => message.cid_stored = Cid.deserialize(reader));
+                        reader.readMessage(message.cid_stored, () => message.cid_stored = CidStoredEvent.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }

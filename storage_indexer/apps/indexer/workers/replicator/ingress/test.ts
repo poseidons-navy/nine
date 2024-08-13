@@ -4,7 +4,7 @@ const client = new NineServiceClient('monorail.proxy.rlwy.net:24651', credential
 
 function main() {
     const call = client.GetNineEvents(new events.EventsRequest({
-        event_type: "Cid",
+        event_type: "CidStoredEvent",
         sequence_number: 0
     }))
 

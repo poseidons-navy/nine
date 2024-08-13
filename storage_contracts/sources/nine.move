@@ -48,7 +48,7 @@ module nine::nine {
 
     }
 
-    fun store_cid(admin: &signer, cid: string::String) acquires CidArray, State {
+    public entry fun store_cid(admin: &signer, cid: string::String) acquires CidArray, State {
         let resource_address = account::create_resource_address(&@nine, SEED);
         let cid_array = borrow_global_mut<CidArray>(resource_address);
         let state = borrow_global_mut<State>(resource_address);
