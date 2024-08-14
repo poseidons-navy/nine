@@ -6,6 +6,9 @@ router.get("/test", (req, res) => {
 })
 
 router.post('/create', async(req, res) => {
+    let body = req.body;
+
+    
     res.send("Created");
 })
 
