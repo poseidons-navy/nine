@@ -1,7 +1,6 @@
 import {z} from "zod";
 
-
-let createRequestSchema = z.object({
+export const createRequestSchema = z.object({
     requestInfo: z.object({
         expectedAmount: z.number(),
         payeeAddress: z.string().length(66, "Payee address should be 66 characters long"),
@@ -13,7 +12,7 @@ let createRequestSchema = z.object({
         dueDate: z.string()
     }),
     signerAddress: z.string().length(66, "Signer address should be 66 characters long")
-})
+});
 
 export type CreateRequestParams = z.infer<typeof createRequestSchema>;
 // export interface CreateRequestParams {

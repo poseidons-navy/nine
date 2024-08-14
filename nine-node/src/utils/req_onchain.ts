@@ -21,11 +21,11 @@ export async function storeCidOnchain(cid: string) {
             signer: nineAdmin
         })
         const transactionHash = commitedTransaction.hash
-        console.log("Transaction hash: ", transactionHash);
+        // console.log("Transaction hash: ", transactionHash);
         const status = await aptos.transaction.waitForTransaction({
             transactionHash
         })
-        console.log("Transaction status: ", status);
+        // console.log("Transaction status: ", status);
         if (!status.success) {
             throw new Error("Transaction failed");
         }
@@ -36,4 +36,4 @@ export async function storeCidOnchain(cid: string) {
 
 
 }
-storeCidOnchain("SomethingCid");
+// storeCidOnchain("SomethingCid");

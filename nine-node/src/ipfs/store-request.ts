@@ -1,7 +1,7 @@
 import { dagJson } from "@helia/dag-json";
 import node from "./client";
 import { CreateRequestParams } from "../types";
-import { CID, Version } from 'multiformats/cid'
+import { CID, Version } from 'multiformats/cid';
 /**
  * storeRequest - Function to store rquest details in IPFS.
  * @param args The request creation parameters.
