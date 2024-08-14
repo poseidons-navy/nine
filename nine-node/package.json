@@ -19,6 +19,8 @@
     "@types/express-serve-static-core": "^4.19.5",
     "@types/node": "^22.0.1",
     "tsup": "^8.2.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.16.3",
     "typescript": "^5.5.4"
   },
   "dependencies": {
@@ -29,8 +31,6 @@
     "express": "^4.19.2",
     "helia": "^4.2.5",
     "multiformats": "^13.2.2",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.16.3",
     "zod": "^3.23.8"
   }
 }
