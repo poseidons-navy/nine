@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A payment package for the nine protocol ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,10 @@
   "author": "Patrick Ojiambo",
   "license": "ISC",
   "dependencies": {
+    "@aptos-labs/ts-sdk": "^1.26.0",
     "tsup": "^8.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0"
   }
 }
