@@ -7,8 +7,9 @@ const migrationClient = postgres(process.env.POSTGRES_CONN_STRING, { max: 1 });
 (async function main() {
     try {
         await migrate(drizzle(migrationClient), {
-            migrationsFolder: "src/db/migrations"
+            migrationsFolder: "./migrations"
         })
+        console.log("Migrations complete");
     } catch(err) {
         console.log("Error Migrating", err);
     }
