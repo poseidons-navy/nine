@@ -14,6 +14,9 @@ importers:
       '@helia/dag-json':
         specifier: ^3.0.5
         version: 3.0.5
+      '@helia/json':
+        specifier: ^3.0.5
+        version: 3.0.5
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -25,7 +28,7 @@ importers:
         version: 4.19.2
       helia:
         specifier: ^4.2.5
-        version: 4.2.5(react-native@0.74.4)
+        version: 4.2.5(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))
       multiformats:
         specifier: ^13.2.2
         version: 13.2.2
@@ -50,7 +53,7 @@ importers:
         version: 10.9.2(@types/node@22.0.1)(typescript@5.5.4)
       tsup:
         specifier: ^8.2.3
-        version: 8.2.3(tsx@4.16.3)(typescript@5.5.4)
+        version: 8.2.3(tsx@4.16.3)(typescript@5.5.4)(yaml@2.5.0)
       tsx:
         specifier: ^4.16.3
         version: 4.16.3
@@ -1129,6 +1132,9 @@ packages:
 
   '@helia/interface@4.3.1':
     resolution: {integrity: sha512-jvuUUAQbLMhvMt+Lon7mJfJt5xJWiwn8aXtI9fHBpMNMsrKJOtefxAzwSr18xe+C9bMdOyRtocj2eFhs74bQ8w==}
+
+  '@helia/json@3.0.5':
+    resolution: {integrity: sha512-ZfXIEny34tPIrYKHZ69CUEIzZtvcnZkXlL2LFuKzY4YsjOfuoGf670PZMdk+ZMCO3Vbq0m0FghJKwZot5pl8rQ==}
 
   '@helia/routers@1.1.1':
     resolution: {integrity: sha512-LsEkUAno4PiQ1cmwxFnYWy5xQicpzjXyYeRJEGLjAnAXin8hq0JPkEouZx8vTlmSf1Rde4RSaTu3+3H1qj5ccw==}
@@ -5376,6 +5382,14 @@ snapshots:
       multiformats: 13.2.2
       progress-events: 1.0.1
 
+  '@helia/json@3.0.5':
+    dependencies:
+      '@helia/interface': 4.3.1
+      '@libp2p/interfaces': 3.3.2
+      interface-blockstore: 5.2.10
+      multiformats: 13.2.2
+      progress-events: 1.0.1
+
   '@helia/routers@1.1.1':
     dependencies:
       '@helia/delegated-routing-v1-http-api-client': 3.0.1
@@ -5843,7 +5857,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@libp2p/webrtc@4.1.3(react-native@0.74.4)':
+  '@libp2p/webrtc@4.1.3(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))':
     dependencies:
       '@chainsafe/libp2p-noise': 15.1.0
       '@libp2p/interface': 1.6.2
@@ -5866,7 +5880,7 @@ snapshots:
       progress-events: 1.0.1
       protons-runtime: 5.4.0
       race-signal: 1.0.2
-      react-native-webrtc: 118.0.7(react-native@0.74.4)
+      react-native-webrtc: 118.0.7(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))
       uint8arraylist: 2.4.8
       uint8arrays: 5.1.0
     transitivePeerDependencies:
@@ -6120,14 +6134,14 @@ snapshots:
 
   '@react-native/assets-registry@0.74.86': {}
 
-  '@react-native/babel-plugin-codegen@0.74.86(@babel/preset-env@7.25.3)':
+  '@react-native/babel-plugin-codegen@0.74.86(@babel/preset-env@7.25.3(@babel/core@7.25.2))':
     dependencies:
-      '@react-native/codegen': 0.74.86(@babel/preset-env@7.25.3)
+      '@react-native/codegen': 0.74.86(@babel/preset-env@7.25.3(@babel/core@7.25.2))
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
 
-  '@react-native/babel-preset@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)':
+  '@react-native/babel-preset@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-proposal-async-generator-functions': 7.20.7(@babel/core@7.25.2)
@@ -6169,32 +6183,32 @@ snapshots:
       '@babel/plugin-transform-typescript': 7.25.2(@babel/core@7.25.2)
       '@babel/plugin-transform-unicode-regex': 7.24.7(@babel/core@7.25.2)
       '@babel/template': 7.25.0
-      '@react-native/babel-plugin-codegen': 0.74.86(@babel/preset-env@7.25.3)
+      '@react-native/babel-plugin-codegen': 0.74.86(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       babel-plugin-transform-flow-enums: 0.0.2(@babel/core@7.25.2)
       react-refresh: 0.14.2
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
 
-  '@react-native/codegen@0.74.86(@babel/preset-env@7.25.3)':
+  '@react-native/codegen@0.74.86(@babel/preset-env@7.25.3(@babel/core@7.25.2))':
     dependencies:
       '@babel/parser': 7.25.3
       '@babel/preset-env': 7.25.3(@babel/core@7.25.2)
       glob: 7.2.3
       hermes-parser: 0.19.1
       invariant: 2.2.4
-      jscodeshift: 0.14.0(@babel/preset-env@7.25.3)
+      jscodeshift: 0.14.0(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       mkdirp: 0.5.6
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/community-cli-plugin@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)':
+  '@react-native/community-cli-plugin@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))':
     dependencies:
       '@react-native-community/cli-server-api': 13.6.9
       '@react-native-community/cli-tools': 13.6.9
       '@react-native/dev-middleware': 0.74.86
-      '@react-native/metro-babel-transformer': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)
+      '@react-native/metro-babel-transformer': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       chalk: 4.1.2
       execa: 5.1.1
       metro: 0.80.9
@@ -6238,10 +6252,10 @@ snapshots:
 
   '@react-native/js-polyfills@0.74.86': {}
 
-  '@react-native/metro-babel-transformer@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)':
+  '@react-native/metro-babel-transformer@0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))':
     dependencies:
       '@babel/core': 7.25.2
-      '@react-native/babel-preset': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)
+      '@react-native/babel-preset': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       hermes-parser: 0.19.1
       nullthrows: 1.1.1
     transitivePeerDependencies:
@@ -6250,12 +6264,12 @@ snapshots:
 
   '@react-native/normalize-colors@0.74.86': {}
 
-  '@react-native/virtualized-lists@0.74.86(react-native@0.74.4)(react@18.2.0)':
+  '@react-native/virtualized-lists@0.74.86(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))(react@18.2.0)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 18.2.0
-      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(react@18.2.0)
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0)
 
   '@rnx-kit/chromium-edge-launcher@1.0.0':
     dependencies:
@@ -7370,7 +7384,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  helia@4.2.5(react-native@0.74.4):
+  helia@4.2.5(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0)):
     dependencies:
       '@chainsafe/libp2p-noise': 15.1.0
       '@chainsafe/libp2p-yamux': 6.0.2
@@ -7393,7 +7407,7 @@ snapshots:
       '@libp2p/ping': 1.1.3
       '@libp2p/tcp': 9.1.3
       '@libp2p/upnp-nat': 1.2.3
-      '@libp2p/webrtc': 4.1.3(react-native@0.74.4)
+      '@libp2p/webrtc': 4.1.3(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))
       '@libp2p/websockets': 8.1.3
       '@libp2p/webtransport': 4.1.3
       '@multiformats/dns': 1.0.6
@@ -7760,7 +7774,7 @@ snapshots:
 
   jsc-safe-url@0.2.4: {}
 
-  jscodeshift@0.14.0(@babel/preset-env@7.25.3):
+  jscodeshift@0.14.0(@babel/preset-env@7.25.3(@babel/core@7.25.2)):
     dependencies:
       '@babel/core': 7.25.2
       '@babel/parser': 7.25.3
@@ -8347,10 +8361,12 @@ snapshots:
 
   poseidon-lite@0.2.1: {}
 
-  postcss-load-config@6.0.1(tsx@4.16.3):
+  postcss-load-config@6.0.1(tsx@4.16.3)(yaml@2.5.0):
     dependencies:
       lilconfig: 3.1.2
+    optionalDependencies:
       tsx: 4.16.3
+      yaml: 2.5.0
 
   prebuild-install@7.1.2:
     dependencies:
@@ -8465,28 +8481,28 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-native-webrtc@118.0.7(react-native@0.74.4):
+  react-native-webrtc@118.0.7(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0)):
     dependencies:
       base64-js: 1.5.1
       debug: 4.3.4
       event-target-shim: 6.0.2
-      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(react@18.2.0)
+      react-native: 0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3)(react@18.2.0):
+  react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native-community/cli': 13.6.9
       '@react-native-community/cli-platform-android': 13.6.9
       '@react-native-community/cli-platform-ios': 13.6.9
       '@react-native/assets-registry': 0.74.86
-      '@react-native/codegen': 0.74.86(@babel/preset-env@7.25.3)
-      '@react-native/community-cli-plugin': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3)
+      '@react-native/codegen': 0.74.86(@babel/preset-env@7.25.3(@babel/core@7.25.2))
+      '@react-native/community-cli-plugin': 0.74.86(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       '@react-native/gradle-plugin': 0.74.86
       '@react-native/js-polyfills': 0.74.86
       '@react-native/normalize-colors': 0.74.86
-      '@react-native/virtualized-lists': 0.74.86(react-native@0.74.4)(react@18.2.0)
+      '@react-native/virtualized-lists': 0.74.86(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.2.0))(react@18.2.0)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -8965,7 +8981,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.2.3(tsx@4.16.3)(typescript@5.5.4):
+  tsup@8.2.3(tsx@4.16.3)(typescript@5.5.4)(yaml@2.5.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.0)
       cac: 6.7.14
@@ -8977,12 +8993,13 @@ snapshots:
       globby: 11.1.0
       joycon: 3.1.1
       picocolors: 1.0.1
-      postcss-load-config: 6.0.1(tsx@4.16.3)
+      postcss-load-config: 6.0.1(tsx@4.16.3)(yaml@2.5.0)
       resolve-from: 5.0.0
       rollup: 4.19.1
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
+    optionalDependencies:
       typescript: 5.5.4
     transitivePeerDependencies:
       - jiti
