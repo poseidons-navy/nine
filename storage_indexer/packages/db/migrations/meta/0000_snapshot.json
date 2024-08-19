@@ -1,5 +1,5 @@
 {
-  "id": "99beef8a-bc55-4a3d-b6bf-7d4b2cb18940",
+  "id": "b7f6dd6b-e991-487b-a17c-872a92a4bc8f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -23,6 +23,12 @@
         "timestamp": {
           "name": "timestamp",
           "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "payer_adrress": {
+          "name": "payer_adrress",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         }

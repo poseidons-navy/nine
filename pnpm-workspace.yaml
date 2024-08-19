@@ -1,3 +1,6 @@
 packages:
+  - storage_indexer/apps/*
+  - storage_indexer/packages/*
   - nine-node
   - packages/*
+  
