@@ -4,7 +4,8 @@ import { ProcessorPlugin } from "../plugin";
 import * as schema from 'zschema'
 import db from "db";
 import { schema as dschema } from "db";
-import { retrievePayerAdress } from "./payer_address";
+import { readFromIPFS } from "ipfs";
+import { CreateRequestParams } from "./type";
 const { cidEvents } = dschema
 
 
@@ -25,7 +26,8 @@ export class CidProcessor implements ProcessorPlugin {
         const data = parsed.data
         //Try to get the payer_adress from IPFS
         console.log("Data incoming", data)
-        const payer_address = await retrievePayerAdress(data.cid)
+        const requestData: CreateRequestParams = await readFromIPFS(data.cid) as unknown as CreateRequestParams
+        const payer_address = requestData.requestInfo.payerAddress
         console.log("Payer address incoming", payer_address);
         if (!payer_address) {
             throw new Error("Could Not Get Payer Address")

@@ -1,24 +1,19 @@
 {
     "compilerOptions": {
-      "target": "esnext",
+      "target": "ES2021",
       "allowJs": true,
       "skipLibCheck": true,
       "strict": true,
       "forceConsistentCasingInFileNames": true,
       "noEmit": true,
       "esModuleInterop": true,
-      "module": "ESNext",
+      "module": "ES2022",
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noErrorTruncation": true,
       "outDir": "./dist",
-      "declaration": true,
-      "paths": {
-        "@storage_indexer/*": ["./src/*"]
-        
-
-      }
+      "declaration": true
     },
     "include": ["./**/*.ts"],
     "exclude": ["node_modules"],

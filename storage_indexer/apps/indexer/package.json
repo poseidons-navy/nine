@@ -33,7 +33,8 @@
     "node-lmdb": "^0.10.0",
     "timer-node": "^5.0.7",
     "zod": "^3.23.8",
-    "zschema": "workspace:*"
+    "zschema": "workspace:*",
+    "ipfs": "workspace:*"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",

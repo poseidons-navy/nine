@@ -1,33 +1,27 @@
 {
-  "id": "b7f6dd6b-e991-487b-a17c-872a92a4bc8f",
+  "id": "7187e538-146f-432f-888e-97e32ed98dc0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.cid": {
-      "name": "cid",
+    "public.Users": {
+      "name": "Users",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
-        "cid": {
-          "name": "cid",
+        "address": {
+          "name": "address",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "timestamp": {
-          "name": "timestamp",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "payer_adrress": {
-          "name": "payer_adrress",
+        "expoToken": {
+          "name": "expoToken",
           "type": "text",
           "primaryKey": false,
           "notNull": true
