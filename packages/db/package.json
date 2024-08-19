@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsup",
     "migrate": "node ./src/migration.js",
-    "generate": "drizzle-kit generate --config ./src/drizzle.config.ts"
+    "generate": "drizzle-kit generate --config ./src/drizzle.config.ts",
+    "studio": "drizzle-kit studio --config ./src/drizzle.config.ts"
   },
   "keywords": [],
   "author": "",
