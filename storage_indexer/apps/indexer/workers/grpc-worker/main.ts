@@ -24,6 +24,6 @@ console.log("Indexer API Key", process.env.INDEXER_API_KEY);
         await worker.run(BigInt(parsed))
     }
     catch (e) {
-        console.log("Something very  wrong occured while processing data:", e)
+        console.log("Something wrong occured while processing data:", e)
     }
 })();

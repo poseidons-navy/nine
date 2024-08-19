@@ -1,1 +1,1 @@
-export type EVENT_NAMES = 'Cid' | 'LOG'
+export type EVENT_NAMES = 'CidStoredEvent' | 'LOG'

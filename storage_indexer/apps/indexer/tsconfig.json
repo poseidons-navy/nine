@@ -13,7 +13,12 @@
       "isolatedModules": true,
       "noErrorTruncation": true,
       "outDir": "./dist",
-      "declaration": true
+      "declaration": true,
+      "paths": {
+        "@storage_indexer/*": ["./src/*"]
+        
+
+      }
     },
     "include": ["./**/*.ts"],
     "exclude": ["node_modules"],

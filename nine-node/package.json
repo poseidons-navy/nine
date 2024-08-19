@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup",
-    "dev": "npx nodemon"
+    "build": "rm -rf dist && tsup",
+    "dev": "npx nodemon",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,18 +16,20 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "^4.19.5",
     "@types/node": "^22.0.1",
+    "ts-node": "^10.9.2",
     "tsup": "^8.2.3",
+    "tsx": "^4.16.3",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@helia/dag-json": "^3.0.5",
+    "@aptos-labs/ts-sdk": "^1.26.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "helia": "^4.2.5",
+    "ipfs": "workspace:*",
     "multiformats": "^13.2.2",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.16.3"
+    "zod": "^3.23.8"
   }
 }

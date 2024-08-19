@@ -1,18 +1,16 @@
-import { dagJson } from "@helia/dag-json";
-import node from "./client";
 import { CreateRequestParams } from "../types";
-import { CID, Version } from 'multiformats/cid'
+import {storeData} from "ipfs";
 /**
  * storeRequest - Function to store rquest details in IPFS.
  * @param args The request creation parameters.
  */
-export async function storeRequest(args: CreateRequestParams): Promise<CID<unknown, number, number, Version>> {
+export async function storeRequest(args: CreateRequestParams): Promise<string> {
     try {
-        const d = dagJson(node);
-        const address = await d.add(args);
-        return address;
+        return await storeData(args);
     } catch (err) {
         console.log(err);
         throw new Error("Could Not Store Request");
     }
-}
+    
+    }
+
