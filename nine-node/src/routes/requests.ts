@@ -35,9 +35,7 @@ router.post('/create', async(req, res) => {
                 title: "You Have Received A Payment Request",
                 pushToken: userDetails[0].token,
                 body: `You have received a payment request of ${parsed.requestInfo.expectedAmount} APT`,
-                data: {
-                    requestID
-                }
+                data: parsed
             }]);
             return res.status(201).json({requestID});
         }
