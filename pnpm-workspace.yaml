@@ -3,4 +3,6 @@ packages:
   - storage_indexer/packages/*
   - nine-node
   - packages/*
+  - payment_indexer/apps/*
+  - payment_indexer/packages/*
   

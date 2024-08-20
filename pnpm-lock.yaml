@@ -124,6 +124,250 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
 
+  payment_indexer/apps/api:
+    dependencies:
+      '@apollo/server':
+        specifier: ^4.10.5
+        version: 4.11.0(graphql@16.9.0)
+      db:
+        specifier: workspace:*
+        version: link:../../../storage_indexer/packages/db
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      graphql:
+        specifier: ^16.8.1
+        version: 16.9.0
+      graphql-type-json:
+        specifier: ^0.3.2
+        version: 0.3.2(graphql@16.9.0)
+      zod:
+        specifier: ^3.23.0
+        version: 3.23.8
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.0
+        version: 4.17.7
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.15.0
+      nodemon:
+        specifier: ^3.1.0
+        version: 3.1.4
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.15.0)(typescript@5.5.4)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.4
+
+  payment_indexer/apps/indexer:
+    dependencies:
+      '@aptos-labs/aptos-protos':
+        specifier: 1.1.2
+        version: 1.1.2
+      '@grpc/grpc-js':
+        specifier: ^1.11.1
+        version: 1.11.1
+      '@helia/dag-json':
+        specifier: ^3.0.5
+        version: 3.0.5
+      '@helia/json':
+        specifier: ^3.0.5
+        version: 3.0.5
+      '@nine/grpc2':
+        specifier: workspace:*
+        version: link:../../packages/grpc
+      '@nine/lama2':
+        specifier: workspace:*
+        version: link:../../packages/lama
+      '@nine/posthog2':
+        specifier: workspace:*
+        version: link:../../packages/posthog
+      db2:
+        specifier: workspace:*
+        version: link:../../packages/db
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      helia:
+        specifier: ^4.2.5
+        version: 4.2.5(react-native@0.75.1(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(react@18.3.1)(typescript@5.5.4))
+      ipfs:
+        specifier: workspace:*
+        version: link:../../../packages/ipfs
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      monitor2:
+        specifier: workspace:*
+        version: link:../../packages/monitor
+      multiformats:
+        specifier: ^13.2.2
+        version: 13.2.2
+      node-lmdb:
+        specifier: ^0.10.0
+        version: 0.10.1
+      timer-node:
+        specifier: ^5.0.7
+        version: 5.0.7
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+      zschema2:
+        specifier: workspace:*
+        version: link:../../packages/schema
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.7
+        version: 4.17.7
+      '@types/node':
+        specifier: ^20.14.14
+        version: 20.15.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.15.0)(typescript@5.5.4)
+      tsup:
+        specifier: ^8.2.4
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
+
+  payment_indexer/packages/db:
+    dependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      drizzle-orm:
+        specifier: ^0.33.0
+        version: 0.33.0(postgres@3.4.4)(react@18.3.1)
+      postgres:
+        specifier: ^3.4.4
+        version: 3.4.4
+      tsup:
+        specifier: ^8.2.3
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.2
+        version: 22.4.0
+      drizzle-kit:
+        specifier: ^0.24.0
+        version: 0.24.0
+
+  payment_indexer/packages/grpc:
+    dependencies:
+      '@grpc/grpc-js':
+        specifier: ^1.10.6
+        version: 1.11.1
+      google-protobuf:
+        specifier: ^3.21.2
+        version: 3.21.4
+      protoc-gen-ts:
+        specifier: ^0.8.7
+        version: 0.8.7
+    devDependencies:
+      '@types/google-protobuf':
+        specifier: ^3.15.12
+        version: 3.15.12
+      grpc-tools:
+        specifier: ^1.12.4
+        version: 1.12.4
+      grpc_tools_node_protoc_ts:
+        specifier: ^5.3.3
+        version: 5.3.3
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@22.4.0)(typescript@5.5.4)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.4
+
+  payment_indexer/packages/lama:
+    dependencies:
+      db:
+        specifier: workspace:*
+        version: link:../../../storage_indexer/packages/db
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      node-lmdb:
+        specifier: ^0.10.0
+        version: 0.10.1
+      zschema2:
+        specifier: workspace:*
+        version: link:../schema
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.0
+        version: 4.17.7
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.15.0
+      tsup:
+        specifier: ^8.0.2
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.4
+
+  payment_indexer/packages/monitor:
+    dependencies:
+      '@nine/lama2':
+        specifier: workspace:*
+        version: link:../lama
+      '@nine/posthog2':
+        specifier: workspace:*
+        version: link:../posthog
+      tsup:
+        specifier: ^8.2.4
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+
+  payment_indexer/packages/posthog:
+    dependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      posthog-node:
+        specifier: ^4.0.0
+        version: 4.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.15.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.15.0)(typescript@5.5.4)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.4
+
+  payment_indexer/packages/schema:
+    dependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.15.0
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.4
+      zod:
+        specifier: ^3.23.0
+        version: 3.23.8
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+
   storage_indexer/apps/api:
     dependencies:
       '@apollo/server':
