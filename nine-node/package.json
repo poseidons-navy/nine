@@ -29,6 +29,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "ipfs": "workspace:*",
+    "notifications": "workspace:*",
+    "db": "workspace:*",
     "multiformats": "^13.2.2",
     "zod": "^3.23.8"
   }
