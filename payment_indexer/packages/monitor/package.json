@@ -1,0 +1,19 @@
+{
+  "name": "monitor2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./dist && tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nine/lama2": "workspace:*",
+    "@nine/posthog2": "workspace:*",
+    "tsup": "^8.2.4"
+  }
+}

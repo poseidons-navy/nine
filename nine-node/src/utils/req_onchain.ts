@@ -31,7 +31,7 @@ export async function storeCidOnchain(cid: string) {
         }
     }
     catch (err) {
-        throw Error((err as Error).message);
+        throw (err);
     }
 
 

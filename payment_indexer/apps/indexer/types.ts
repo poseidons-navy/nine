@@ -1,0 +1,1 @@
+export type EVENT_NAMES = 'PaymentEvent' | 'LOG'
