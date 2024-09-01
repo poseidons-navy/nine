@@ -19,17 +19,22 @@
   "dependencies": {
     "@aptos-labs/aptos-protos": "1.1.2",
     "@grpc/grpc-js": "^1.11.1",
+    "@helia/dag-json": "^3.0.5",
+    "@helia/json": "^3.0.5",
     "@nine/grpc": "workspace:*",
     "@nine/lama": "workspace:*",
     "@nine/posthog": "workspace:*",
-    "monitor": "workspace:*",
     "db": "workspace:*",
     "dotenv": "^16.4.5",
+    "helia": "^4.2.5",
     "lodash": "^4.17.21",
+    "monitor": "workspace:*",
+    "multiformats": "^13.2.2",
     "node-lmdb": "^0.10.0",
     "timer-node": "^5.0.7",
     "zod": "^3.23.8",
-    "zschema": "workspace:*"
+    "zschema": "workspace:*",
+    "ipfs": "workspace:*"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",

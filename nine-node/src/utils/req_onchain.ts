@@ -36,4 +36,3 @@ export async function storeCidOnchain(cid: string) {
 
 
 }
-// storeCidOnchain("SomethingCid");
