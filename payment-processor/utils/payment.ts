@@ -13,28 +13,18 @@ import { readFromIPFS } from "ipfs"
  */
 export async function payRequest(requestId: string, requestData: requestParams, payerAdress: Ed25519Account) {
     try {
-        const account2 = Account.generate()
         const makePaymentTransaction = await aptos.transaction.build.simple({
             // sender: payerAdress.accountAddress,
             sender: nineAdmin.accountAddress,
-            data: {
-                function: MODULE_ENTRY_FUNCTIONS.make_payment,
-                functionArguments: [100000, "0x1dc1d5999fc92580f0324e270318ce6465a428d30e2d488b0471fd764aad39cc", "Some_cid"  ]
+            data:{
+                function: MODULE_ENTRY_FUNCTIONS.store_payment_details,
+                functionArguments: [
+                    requestData.requestInfo.payerAddress,
+                    requestData.requestInfo.payeeAddress,
+                    requestData.requestInfo.expectedAmount,
+                    requestId
+                ]
             }
-            // data: {
-            //     function: MODULE_ENTRY_FUNCTIONS.make_payment,
-            //     typeArguments: [],
-            //     functionArguments: [
-            //         requestData.requestInfo.expectedAmount,
-            //         // requestData.requestInfo.payeeAddress,
-            //         // requestData.requestInfo.payerAddress,
-
-            //         account2.accountAddress,
-                   
-
-            //         requestId
-            //     ]
-            // }
         })
         console.log("We awaiting");
         const pendingTxn = await aptos.signAndSubmitTransaction({
@@ -44,19 +34,19 @@ export async function payRequest(requestId: string, requestData: requestParams, 
         const response = await aptos.waitForTransaction({
             transactionHash: pendingTxn.hash,
         });
-        console.log("Transferred coins", response.hash);
+        console.log("Stored details and emitting events", response.hash);
 
     }
     catch (error) {
         throw (error)
     }
 }
-//Test
-(async () => {
-    const requestId = "bafkreihmijlixhujrzlf2cqvrtomnyilmltdpgpuf5suotnkgmz2i2vkuy";
-    const requestData = await readFromIPFS(requestId);
-    console.log("Request data", requestData);
-    //Some private key
+// //Test
+// (async () => {
+//     const requestId = "bafkreigybl3dilz3kzd6wpx2o47bqn2e6hv5hmbqcugy3zxmc6m26ud3t4";
+//     const requestData = await readFromIPFS(requestId);
+//     console.log("Request data", requestData);
+//     //Some private key
 
-    await payRequest(requestId, requestData as unknown as requestParams, nineAdmin)
-})()
+//     await payRequest(requestId, requestData as unknown as requestParams, nineAdmin)
+// })()
