@@ -3,12 +3,11 @@ import { LevelDB } from "@nine/lama2";
 import "dotenv/config";
 const MODULE_ADDRESS = process.env.MODULE_ADDRESS!
 console.log("Module address", MODULE_ADDRESS);
-const NINE = `${MODULE_ADDRESS}::nine` as const
+const NINE = `${MODULE_ADDRESS}::payment` as const
 
 
 const SUPPORTED_EVENT_TYPES = [
     `${NINE}::PaymentEvent`,
-   
 ]
 
 export type ProcessingResult = {

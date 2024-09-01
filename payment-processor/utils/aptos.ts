@@ -5,5 +5,5 @@ console.log(process.env.NEXT_PUBLIC_NINE_ADMIN_PRIVATE_KEY!);
 const aptosConfig = new AptosConfig({ network: NETWORK ?? Network.TESTNET });
 export const aptos = new Aptos(aptosConfig);
 export const nineAdmin = Account.fromPrivateKey({
-    privateKey: new Ed25519PrivateKey(process.env.NEXT_PUBLIC_NINE_ADMIN_PRIVATE_KEY!),
+    privateKey: new Ed25519PrivateKey("0x642ff352273942d5446599aceb9977ba5ee082c366093cc9267ad0c41c6a8038"),
 })

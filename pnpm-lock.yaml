@@ -124,6 +124,31 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
 
+  payment-processor:
+    dependencies:
+      '@aptos-labs/ts-sdk':
+        specifier: ^1.26.0
+        version: 1.27.0
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      ipfs:
+        specifier: workspace:*
+        version: link:../packages/ipfs
+      tsup:
+        specifier: ^8.2.4
+        version: 8.2.4(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.4.0
+        version: 22.4.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@22.4.0)(typescript@5.5.4)
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
+
   payment_indexer/apps/api:
     dependencies:
       '@apollo/server':
@@ -292,9 +317,9 @@ importers:
 
   payment_indexer/packages/lama:
     dependencies:
-      db:
+      db2:
         specifier: workspace:*
-        version: link:../../../storage_indexer/packages/db
+        version: link:../db
       lodash:
         specifier: ^4.17.21
         version: 4.17.21

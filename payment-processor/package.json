@@ -17,10 +17,13 @@
   "license": "ISC",
   "dependencies": {
     "@aptos-labs/ts-sdk": "^1.26.0",
-    "tsup": "^8.2.4",
-    "ipfs": "workspace:*"
+    "dotenv": "^16.4.5",
+    "ipfs": "workspace:*",
+    "tsup": "^8.2.4"
   },
   "devDependencies": {
-    "@types/node": "^22.2.0"
+    "@types/node": "^22.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
