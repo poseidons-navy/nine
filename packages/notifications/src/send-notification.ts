@@ -1,11 +1,12 @@
 import Expo, { ExpoPushMessage } from "expo-server-sdk";
 import expo from "./client";
+import isExpoTokenValid from "./isExpoTokenValid";
 
 export async function sendNotification(args: {title: string, pushToken: string, body: string, data: Record<string, any>}[]) {
     try {
         let messages: ExpoPushMessage[] = [];
         for (let arg of args) {
-            if(!Expo.isExpoPushToken(arg.pushToken)) {
+            if(!isExpoTokenValid(arg.pushToken)) {
                 throw "Invalid Expo Push Token";
             }
             messages.push({
