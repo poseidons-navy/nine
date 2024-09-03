@@ -1,5 +1,5 @@
-import { Lama } from "@nine/lama";
-import { capture_event } from "@nine/posthog";
+import { Lama } from "@nine/lama2";
+import { capture_event } from "@nine/posthog2";
 
 export class ProcessMonitor {
     last_read: Lama

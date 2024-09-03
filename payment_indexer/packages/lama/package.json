@@ -21,7 +21,7 @@
     "dependencies": {
       "lodash": "^4.17.21",
       "node-lmdb": "^0.10.0",
-      "db2": "workspace:*",
+      "db": "workspace:*",
       "zschema2": "workspace:*"
     }
   }

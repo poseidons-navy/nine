@@ -1,6 +1,6 @@
 import _ from "lodash"
 import { Lama, LamaReader } from "./lama"
-import db from "db2"
+import db from "db"
 const { isNumber, isNull } = _;
 
 export {
