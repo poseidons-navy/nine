@@ -3,10 +3,9 @@ import { EVENT_NAMES } from "../../../types";
 import { ProcessorPlugin } from "../plugin";
 import * as schema from 'zschema'
 import db from "db";
-import { schema as dschema } from "db";
+import { cidEvents } from "db";
 import { readFromIPFS } from "ipfs";
 import { CreateRequestParams } from "./type";
-const { cidEvents } = dschema
 
 
 export class CidProcessor implements ProcessorPlugin {

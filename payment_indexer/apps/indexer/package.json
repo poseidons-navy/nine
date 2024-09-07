@@ -24,7 +24,7 @@
     "@nine/grpc2": "workspace:*",
     "@nine/lama2": "workspace:*",
     "@nine/posthog2": "workspace:*",
-    "db2": "workspace:*",
+    "db": "workspace:*",
     "dotenv": "^16.4.5",
     "helia": "^4.2.5",
     "lodash": "^4.17.21",

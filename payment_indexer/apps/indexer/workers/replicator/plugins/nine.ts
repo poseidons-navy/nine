@@ -3,11 +3,9 @@ import { EVENT_NAMES } from "../../../types";
 import { ProcessorPlugin } from "../plugin";
 import * as schema from 'zschema2'
 import db from "db";
-import { schema as dschema } from "db2";
 import { readFromIPFS } from "ipfs";
 import { CreateRequestParams } from "./type";
-const { cidEvents } = dschema
-
+import { paymentEvents } from "db";
 
 export class CidProcessor implements ProcessorPlugin {
     name(): EVENT_NAMES {
@@ -27,7 +25,7 @@ export class CidProcessor implements ProcessorPlugin {
         //Try to get the payer_adress from IPFS
         
         try {
-            await db.insert(cidEvents).values({
+            await db.insert(paymentEvents).values({
                 id: `${data.hid}`,
                 cid: data.cid,
                 timestamp: data.timestamp,
