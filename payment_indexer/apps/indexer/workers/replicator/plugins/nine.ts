@@ -11,10 +11,11 @@ const { cidEvents } = dschema
 
 export class CidProcessor implements ProcessorPlugin {
     name(): EVENT_NAMES {
-        return 'PaymentEvent';
+        return 'PaymentEvent2';
     }
     async process(event: Record<string, any>, monitor: ProcessMonitor, sequence_number: string, signature: string) {
         console.log("Processing PaymentEvent, Adding to DB");
+        event.amount = parseInt(event.amount)
         const parsed = schema.Cid.safeParse(event)
 
         if (!parsed.success) {
