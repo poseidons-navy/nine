@@ -1,6 +1,6 @@
 import { IngressPlugin } from "./definition";
 import { EVENT_NAMES } from "../../../../types";
-import { ServerWritableStream, events, sendUnaryData } from "@nine/grpc";
+import { ServerWritableStream, events, sendUnaryData } from "@nine/grpc2";
 import { Cid as CidSchema } from "zschema2";
 export class CIdStoreEvent implements IngressPlugin {
     name(): EVENT_NAMES {

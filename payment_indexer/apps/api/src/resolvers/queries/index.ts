@@ -1,11 +1,11 @@
 import { PaginationArg, Resolver } from "../../../types"
 import db from "db"
-import { schema } from "db"
+import { paymentEvents } from "db"
 
 
 interface ResolverMap {
     Query: {
-        cid: Resolver<typeof schema.cidEvents, never, never>
+        cid: Resolver<typeof paymentEvents, never, never>
 
     }
 }
@@ -14,7 +14,7 @@ interface ResolverMap {
 export const nineQueries: ResolverMap = {
     Query: {
         cid: async (_, args, __) => {
-            const cid_query = await db.select({ cidEvents: schema.cidEvents }).from(schema.cidEvents)
+            const cid_query = await db.select({ cidEvents: paymentEvents }).from(paymentEvents)
             return cid_query ?? null
         },
 
