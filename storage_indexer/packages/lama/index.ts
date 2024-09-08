@@ -1,9 +1,10 @@
 import _ from "lodash"
 import { Lama, LamaReader } from "./lama"
 import db from "db"
-import { schema as dschema } from "db";
-import * as schema from 'zschema'
-const { cidEvents } = dschema
+// import { schema as dschema } from "db";
+// import * as schema from 'zschema'
+// const { cidEvents } = dschema
+import { cidEvents } from "db";
 const { isNumber, isNull } = _;
 
 export {
