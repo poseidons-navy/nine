@@ -1,1 +1,1 @@
-export type EVENT_NAMES = 'PaymentEvent' | 'LOG'
+export type EVENT_NAMES = 'PaymentEvent2' | 'LOG'

@@ -56,10 +56,19 @@ module nine::nine {
         timestamp: u64,
     }
 
+    #[event]
+    struct PaymentEvent2 has drop, store {
+        cid: string::String,
+        amount: u64,
+        payer_address: address,
+        payee_address: address,
+        timestamp: u64,
+        hid: u64
+    }
+
     fun init_module(account: &signer) {
-        let (resource_signer, signer_capability) = account::create_resource_account(
-            account, SEED
-        );
+        let (resource_signer, signer_capability) =
+            account::create_resource_account(account, SEED);
         move_to(&resource_signer, State { signer_capability, cid_hid: 100 });
         let cid_array = CidArray { cids: vector::empty() };
         move_to(&resource_signer, cid_array);
@@ -93,12 +102,32 @@ module nine::nine {
         request_id: string::String
     ) {
         emit(
+
             PaymentEvent {
                 request_id,
                 amount,
                 sender,
                 receiver,
                 timestamp: timestamp::now_microseconds(),
+            },
+        );
+    }
+
+    public entry fun store_payment_details2(
+        admin: &signer,
+        sender: address,
+        receiver: address,
+        amount: u64,
+        request_id: string::String
+    ) {
+        emit(
+            PaymentEvent2 {
+                cid: request_id,
+                amount,
+                payer_address: sender,
+                payee_address: receiver,
+                timestamp: timestamp::now_microseconds(),
+                hid: 1
             },
         );
     }
@@ -110,7 +139,7 @@ module nine::nine {
         //Transfer Apt
         coin::transfer<AptosCoin>(sender, receiver, amount);
         emit(
-            PaymentEvent {
+             PaymentEvent {
                 request_id,
                 amount,
                 sender: sender_address,
@@ -142,13 +171,14 @@ module nine::nine {
         let receiver = account::create_account_for_test(@0x444);
         let aptos = account::create_account_for_test(@0x01);
         timestamp::set_time_has_started_for_testing(&aptos);
-        let (burn_cap, freeze_cap, mint_cap) = coin::initialize<AptosCoin>(
-            &aptos,
-            string::utf8(b"Aptos"),
-            string::utf8(b"APT"),
-            8,
-            false,
-        );
+        let (burn_cap, freeze_cap, mint_cap) =
+            coin::initialize<AptosCoin>(
+                &aptos,
+                string::utf8(b"Aptos"),
+                string::utf8(b"APT"),
+                8,
+                false,
+            );
         coin::register<AptosCoin>(&aptos);
         coin::register<AptosCoin>(&sender);
         coin::register<AptosCoin>(&receiver);
@@ -189,7 +219,6 @@ module nine::nine {
         let cids = emitted_events<PaymentEvent>();
 
         debug::print<vector<PaymentEvent>>(&cids);
-        
 
     }
 }
