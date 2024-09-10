@@ -4,10 +4,21 @@ import { createRequest } from '../requests';
 const router = Express.Router();
 import db, {eq, users} from "db";
 import {sendNotification} from "notifications";
+import getRequests from '../requests/get-requests';
 
-router.get("/test", (req, res) => {
-    res.send("Done");
+router.get("/", async (req, res) => {
+    try {
+        let requests = await getRequests();
+        res.json(requests);
+    } catch(err: any) {
+        res.json({error: err.toString()}).status(500);
+    }
+});
+
+router.get("/test", async (req, res) => {
+   res.send("Testing Requests"); 
 })
+
 
 router.post('/create', async(req, res) => {
     let body = req.body;
@@ -43,6 +54,10 @@ router.post('/create', async(req, res) => {
         console.log(err);
         return res.status(500).json({message: "Internal Server Error"});
     }
+})
+
+router.all('*', (req, res) => {
+    res.json({error: "Route Does Not Exist"}).status(400);
 })
 
 export default router;
