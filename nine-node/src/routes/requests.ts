@@ -4,13 +4,19 @@ import { createRequest } from '../requests';
 const router = Express.Router();
 import db, {eq, users} from "db";
 import {sendNotification} from "notifications";
+import getRequests from '../requests/get-requests';
 
 router.get("/", async (req, res) => {
-    res.send("Requests Sent");
+    try {
+        let requests = await getRequests();
+        res.json(requests);
+    } catch(err: any) {
+        res.json({error: err.toString()}).status(500);
+    }
 });
 
-router.get("/test", (req, res) => {
-    res.send("Done");
+router.get("/test", async (req, res) => {
+   res.send("Testing Requests"); 
 })
 
 

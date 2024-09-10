@@ -15,6 +15,13 @@
       "when": 1725382114693,
       "tag": "0001_bitter_the_enforcers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1725984876381,
+      "tag": "0002_premium_sentinel",
+      "breakpoints": true
     }
   ]
 }
