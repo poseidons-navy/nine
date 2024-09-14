@@ -17,6 +17,7 @@ router.post('/create', async (req, res) => {
         const svix_id = headers['svix-id']
         const svix_timestamp = headers['svix-timestamp']
         const svix_signature = headers['svix-signature']
+        console.log("SVIX details => ", svix_id, svix_signature, svix_timestamp);
 
         // If there are no Svix headers, error out
         if (!svix_id || !svix_timestamp || !svix_signature) {
@@ -29,7 +30,7 @@ router.post('/create', async (req, res) => {
         let evt;
 
         try {
-            evt = wh.verify(req.body, {
+            evt = wh.verify(JSON.stringify(req.body), {
                 //@ts-ignore
                 'svix-id': svix_id,
                 //@ts-ignore
@@ -51,7 +52,7 @@ router.post('/create', async (req, res) => {
         })
         res.json({message: "User Created Succesfully"}).status(201);
     } catch(err) {
-        console.log("Could Not Create User Account")
+        console.log("Could Not Create User Account", err)
     }
 })
 
