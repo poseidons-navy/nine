@@ -33,6 +33,7 @@
     "ipfs": "workspace:*",
     "multiformats": "^13.2.2",
     "notifications": "workspace:*",
+    "svix": "^1.34.0",
     "zod": "^3.23.8"
   }
 }

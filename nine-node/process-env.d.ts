@@ -4,6 +4,7 @@ declare global {
             PORT: number;
             NEXT_PUBLIC_NINE_ADMIN_PRIVATE_KEY: string
             NEON_CONN_STRING: string;
+            WEBHOOK_SECRET: string;
         }
     }
 }
