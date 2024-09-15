@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsup",
-    "migrate": "drizzle-kit generate --config ./src/drizzle.config.ts",
+    "migrate": "drizzle-kit migrate --config ./src/drizzle.config.ts",
     "generate": "drizzle-kit generate --config ./src/drizzle.config.ts",
     "studio": "drizzle-kit studio --config ./src/drizzle.config.ts"
   },
