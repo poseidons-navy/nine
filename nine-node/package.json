@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@aptos-labs/ts-sdk": "^1.26.0",
+    "@clerk/clerk-sdk-node": "^5.0.38",
     "cors": "^2.8.5",
     "db": "workspace:*",
     "dotenv": "^16.4.5",

@@ -1,8 +1,11 @@
 import Express from 'express';
+import { Request } from 'express-serve-static-core';
 const router = Express.Router();
-import db, { users } from "db";
+import db, { users, eq } from "db";
 import "dotenv/config";
 import { Webhook } from 'svix';
+import { DEFAULT_VALUE } from '../utils/constants';
+import { ClerkExpressWithAuth, WithAuthProp } from '@clerk/clerk-sdk-node';
 
 router.post('/create', async (req, res) => {
     try {
@@ -45,16 +48,37 @@ router.post('/create', async (req, res) => {
         
         // Get data from webhook
         //@ts-ignore
-        const {address, expoToken} = evt.data;
+        const {id} = evt.data;
         await db.insert(users).values({
-            address,
-            expoToken
-        })
+            clerkID: id,
+            address: DEFAULT_VALUE,
+            expoToken: DEFAULT_VALUE
+        });
         res.json({message: "User Created Succesfully"}).status(201);
     } catch(err) {
         console.log("Could Not Create User Account", err)
     }
 })
+
+router.post('/initialize', ClerkExpressWithAuth(), async (req: WithAuthProp<Request>, res) => {
+    try {
+       // Get clerk ID from somewhere
+        const clerkID = req.auth.userId;
+        if(!clerkID) {
+            return res.status(400).json({message: "Please Log In!"});
+        }
+
+        const {expoToken, address} = req.body;
+        await db.update(users).set({
+            expoToken,
+            address
+        }).where(eq(users.clerkID, clerkID));
+        return res.json({message: "User Initialized Succesfully"}).status(201);
+    } catch(err) {
+        console.log("Could Not Initialize User Account => ", err);
+        return res.status(501).json({message: "Internal Server Error"});
+    }
+});
 
 router.get('/test', (req, res) => {
     res.send("Done")
