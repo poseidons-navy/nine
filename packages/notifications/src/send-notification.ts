@@ -15,7 +15,7 @@ export async function sendNotification(args: {title: string, pushToken: string, 
                 priority: 'high',
                 title: arg.title,
                 body: arg.body,
-                data: arg.data 
+                data: arg.data, 
             });
         }
 
