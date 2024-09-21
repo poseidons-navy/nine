@@ -8,6 +8,7 @@ declare global {
             WEBHOOK_SECRET: string;
             CLERK_PUBLISHABLE_KEY: string;
             CLERK_SECRET_KEY: string;
+            EXPO_ACCESS_TOKEN: string;
         }
     }
     namespace Express {

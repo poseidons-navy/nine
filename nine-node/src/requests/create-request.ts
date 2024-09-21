@@ -12,7 +12,6 @@ export async function createRequest(args: CreateRequestParams): Promise<string> 
         const address = await storeRequest(args);
         // Store in blockchain
         await storeCidOnchain(address.toString());
-        console.log("Successfully created request onchain");
         return address.toString();
     } catch (err) {
         console.log(err);

@@ -25,7 +25,6 @@ router.post('/create', async(req, res) => {
     console.log(body);
 
     try {
-        
         let parsedBody = createRequestSchema.safeParse(body);
         if(!parsedBody.success) {
             return res.status(400).json({message: parsedBody.error.issues[0].message})
@@ -38,6 +37,7 @@ router.post('/create', async(req, res) => {
                 token: users.expoToken
             }).from(users)
             .where(eq(users.address, parsed.requestInfo.payerAddress));
+            console.log("User Details => ", userDetails);
 
             if (userDetails.length <= 0) {
                 return res.status(400).json({message: "Payer Account Does Not Exist"});
@@ -48,6 +48,7 @@ router.post('/create', async(req, res) => {
                 body: `You have received a payment request of ${parsed.requestInfo.expectedAmount} APT`,
                 data: parsed
             }]);
+            console.log("Notification Sent");
             return res.status(201).json({requestID});
         }
     } catch(err) {
