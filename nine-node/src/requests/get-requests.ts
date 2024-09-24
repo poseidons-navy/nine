@@ -29,18 +29,19 @@ export default async function getRequests(): Promise<GetRequestData[]> {
             return !(paidRequests.some((e) => e.requestID === r.requestID))
         });
 
-        //@ts-ignore
-        let unpaidRequestsPromise: Promise<GetRequestData[]> = unpaidRequestIDs.map(async (u) => {
+        let unpaidRequestsPromise: Promise<GetRequestData>[] = unpaidRequestIDs.map(async (u) => {
             let rawData = await readFromIPFS(u.requestID);
+    
             return {
-                payee_address: rawData??['requestInfo']??['payeeAddress'].toString() ?? "",
-                amount: rawData??['requestInfo']??['expectedAmount'].toString() ?? "",
+                payee_address: (rawData['requestInfo']['payeeAddress']).toString(), 
+                amount: (rawData['requestInfo']['expectedAmount']).toString(),
                 requestID: u.requestID,
-                reason: rawData??['contentData']??['reason'].toString() ?? "",
+                reason: (rawData['contentData']['reason']).toString(),
                 requestedDate: u.requestedDate.toDateString()
-            }
+            };
         });
-        return unpaidRequestsPromise;
+        let unpaidRequests = await Promise.all(unpaidRequestsPromise);
+        return unpaidRequests;
     } catch(err) {
         throw "Could Not Get Requests"
     }
