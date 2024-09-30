@@ -7,7 +7,7 @@ import { paymentEvents } from "db";
 export async function fetchPayments(requestId: string) {
     const paidRequest = await db.select({
         requestID: paymentEvents.cid
-    }).from(paymentEvents)
+    }).from(paymentEvents).where(eq(paymentEvents.cid, requestId));
     if (paidRequest) {
         return {
             status: "PAID",

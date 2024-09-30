@@ -1,6 +1,6 @@
 import Express from 'express';
 import { createRequestSchema } from '../types';
-import { createRequest } from '../requests';
+import { createRequest, fetchPayments } from '../requests';
 const router = Express.Router();
 import db, {eq, users} from "db";
 import {sendNotification} from "notifications";
@@ -14,6 +14,17 @@ router.get("/", async (req, res) => {
         res.json({error: err.toString()}).status(500);
     }
 });
+router.get("/one/:requestID", async (req, res) => {
+    try {
+        let requestID = req.params.requestID;
+        let requests = await fetchPayments(requestID);
+        res.json(requests);
+    } catch(err: any) {
+        res.json({error: err.toString()}).status(500);
+    }
+}
+);
+
 
 router.get("/test", async (req, res) => {
    res.send("Testing Requests"); 
