@@ -4,7 +4,7 @@ import { createRequest, fetchPayments } from '../requests';
 const router = Express.Router();
 import db, {eq, users} from "db";
 import {sendNotification} from "notifications";
-import getRequests from '../requests/get-requests';
+import getRequests, { getAllRequests } from '../requests/get-requests';
 
 router.get("/", async (req, res) => {
     try {
@@ -14,6 +14,17 @@ router.get("/", async (req, res) => {
         res.json({error: err.toString()}).status(500);
     }
 });
+
+router.get("/all", async(req, res) => {
+    try {
+        let requests = await getAllRequests();
+        res.json(requests);
+    } catch(err) {
+        console.log("Error Getting Requests", err);
+        return res.status(500).json({message: "Error Getting Requests"})
+    }
+});
+
 router.get("/one/:requestID", async (req, res) => {
     try {
         let requestID = req.params.requestID;

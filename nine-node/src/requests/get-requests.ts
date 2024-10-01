@@ -10,6 +10,32 @@ import { paymentEvents } from "db";
 import { cidEvents } from "db";
 import { readFromIPFS } from "ipfs";
 
+export async function getAllRequests(): Promise<GetRequestData[]> {
+    try {
+        const requestIDs = await db.select({
+            requestID: cidEvents.cid,
+            requestDate: cidEvents.timestamp
+        }).from(cidEvents);
+
+        let requestsPromise: Promise<GetRequestData>[] = requestIDs.map(async (u) => {
+            let rawData = await readFromIPFS(u.requestID);
+    
+            return {
+                payee_address: (rawData['requestInfo']['payeeAddress']).toString(), 
+                amount: (rawData['requestInfo']['expectedAmount']).toString(),
+                requestID: u.requestID,
+                reason: (rawData['contentData']['reason']).toString(),
+                requestedDate: u.requestDate.toDateString()
+            };
+        });
+        let requests = await Promise.all(requestsPromise);
+        return requests;
+    } catch(err) {
+        console.log("Error Getting All Requests", err);
+        throw "Error Getting All Requests";
+    }
+}
+
 export default async function getRequests(): Promise<GetRequestData[]> {
     try {
         // Get all requests
