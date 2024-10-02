@@ -29,6 +29,7 @@ export class CidProcessor implements ProcessorPlugin {
         const requestData: CreateRequestParams = await readFromIPFS(data.cid) as unknown as CreateRequestParams
         const payer_address = requestData.requestInfo.payerAddress
         console.log("Payer address incoming", payer_address);
+        console.log("DB is :", db);
         if (!payer_address) {
             throw new Error("Could Not Get Payer Address")
         }
