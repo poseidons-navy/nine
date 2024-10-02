@@ -51,6 +51,10 @@ export class DataProcessor {
 
         while ((key = cursor.goToNext()) !== null) {
             console.log("key::", key)
+            process.on('SIGINT', () => {
+                console.log("Ending process gracefully")
+                process.exit(0);
+            })
             value = cursor.getCurrentBinary()
             if (value && !isNull(value)) {
                 const data = JSON.parse(value.toString())
