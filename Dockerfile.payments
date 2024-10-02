@@ -1,0 +1,9 @@
+FROM node
+WORKDIR /app
+COPY . /app
+RUN npm install -g pnpm
+RUN pnpm install
+RUN pnpm -r build
+RUN cd /app/payment_indexer/apps/indexer
+WORKDIR /app/payment_indexer/apps/indexer
+CMD ["pnpm","start"]

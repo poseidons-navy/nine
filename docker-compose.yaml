@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  storage_indexer:
+    build: 
+      context: .
+      dockerfile: Dockerfile.storage
+    container_name: storage_indexer
+    restart: always
+  payment_indexer:
+    build: 
+      context: .
+      dockerfile: Dockerfile.payments
+    container_name: payment_indexer
+    restart: always
